@@ -3,8 +3,8 @@ import pandas as pd
 import sys
 
 ################################## CARREGUEM EL FITXER EXCEL ###################################
-#df = pd.read_excel (r'C:\Users\julia\Documents\JULIA\UNI\3r\2n_semestre\bdnr\project\Dades.xlsx', sheet_name = None)
-df = pd.read_excel (sys.argv[1], sheet_name = None)
+
+df = pd.read_excel (sys.argv[2], sheet_name = None)
 d_exp = df['MethodOutput']
 d_train = df['Training']
 d_cases = df['Cases']
