@@ -1,10 +1,10 @@
 from pymongo import MongoClient
 import pandas as pd
+import sys
 
 ################################## CARREGUEM EL FITXER EXCEL ###################################
-#path='C:\Users\julia\Documents\JULIA\UNI\3r\2n_semestre\bdnr\project\Dades.xlsx' + arg1
-
-df = pd.read_excel (r'C:\Users\julia\Documents\JULIA\UNI\3r\2n_semestre\bdnr\project\Dades.xlsx', sheet_name = None)
+#df = pd.read_excel (r'C:\Users\julia\Documents\JULIA\UNI\3r\2n_semestre\bdnr\project\Dades.xlsx', sheet_name = None)
+df = pd.read_excel (sys.argv[1], sheet_name = None)
 d_exp = df['MethodOutput']
 d_train = df['Training']
 d_cases = df['Cases']
@@ -70,8 +70,9 @@ for index, row in d_exp.iterrows():
     for index2, row2 in d_train.iterrows(): 
         if (row['MethodID'] == row2['MethodID'] and row['Repetition'] == row2['ExperimentRepetition']):
             nodules.append({'PatientID':     row2['PatientID'], 
-                             'NoduleID':      row2['NodulID'],
-                             'RadDiagnosis': row2['RadiomicsDiagnosis']
+                             'NoduleID':     row2['NodulID'],
+                             'RadDiagnosis': row2['RadiomicsDiagnosis'],
+                             'TrainTest':    row2['Train']
                            })
     dades = {
               'MethodID':       row['MethodID'],
