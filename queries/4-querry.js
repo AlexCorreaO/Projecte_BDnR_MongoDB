@@ -1,0 +1,1 @@
+db.Patients.aggregate([ {"$unwind":"$Gender"},{$group:{"_id" :"$Gender","count":{"$sum" :1}}}])
