@@ -1,5 +1,6 @@
 //8. Mostrar els pacients que tenen tots els seus nóduls amb diagnosis = “Benign” i
 //el seu recompte
+use cancer
 db.Nodules.aggregate([
     {$group: { _id: "$PatientID",
             "Recompte": {$sum:1},
