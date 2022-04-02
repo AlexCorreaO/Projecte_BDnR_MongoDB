@@ -2,7 +2,6 @@
 //device i la data del CT.
 use cancer
 db.CTScanners.aggregate([
-
     {$group: { _id: "$PatientID",
              "CTID": {$addToSet: "$CTID"},
              "Device": {$addToSet: "$Device"},
