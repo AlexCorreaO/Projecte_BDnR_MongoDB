@@ -9,14 +9,14 @@ d_exp = df['MethodOutput']
 d_train = df['Training']
 d_cases = df['Cases']
 
-################################## PARAMETRES DE CONNEXI0 ###################################
+################################## PARAMETRES DE CONNEXIO ###################################
 mongoUser = ''
 mongoPassword = ''
 mongoDB = ''
 Host = 'localhost' 
 Port = 27017
 
-###################################### CONNEXIO ##############################################
+###################################### CONNEXIO ##############################################
 
 DSN = "mongodb://{}:{}".format(Host,Port)
 conn = MongoClient(DSN)
@@ -95,7 +95,6 @@ for index, row in d_cases.iterrows():
             'PatientID':        row['PatientID'], 
             'Age':              row['Age'], 
             'Gender':           row['Gender'],
-            #'NoduleID':         row['NoduleID'],
             'DiagnosisPatient': row['DiagnosisPatient'],
             'Nodules':          nodules
             }
@@ -106,7 +105,6 @@ for index, row in d_cases.iterrows():
             'PatientID':        row['PatientID'], 
             'Age':              row['Age'], 
             'Gender':           row['Gender'],
-            #'NoduleID':          row['NoduleID'],
             'DiagnosisPatient': row['DiagnosisPatient'],
             'Nodules':          nodules
             }
@@ -159,7 +157,6 @@ for index, row in d_cases.iterrows():
     dades = {
         'PatientID':         row['PatientID'], 
         'NoduleID':          row['NoduleID'],
-        #'DiagnosisPatient':  row['DiagnosisPatient'],
         'DiagnosisNodule':   row['DiagnosisNodul'],
         'Position': {
                        'X': row['PositionX'],
