@@ -113,11 +113,8 @@ for index, row in d_cases.iterrows():
         
 ##COLLECTION SCANNERS
 nodules = []
-patients = []
-for index, row in d_cases.iterrows():  
-    nodules.append(row['NoduleID'])
-    patients.append(row['PatientID'])
-                 
+for index, row in d_cases.iterrows(): 
+    nodules.append({'PatientID': row['PatientID'], 'NoduleID': row['NoduleID']})                
     if index == d_cases.shape[0]-1: 
         dades = {
                 'CTID':             row['CTID'],
@@ -128,11 +125,9 @@ for index, row in d_cases.iterrows():
                               'TV': row['ResolutionTV'],
                               'TC': row['ResolutionTC']
                               },
-                'PatientID':        patients,
-                'NoduleID':         nodules
+                'Nodules':          nodules
                 }
         nodules = []
-        patients = []
         sca.insert_one(dades)
         
     elif row['CTID'] != d_cases['CTID'][index+1]: 
@@ -145,11 +140,9 @@ for index, row in d_cases.iterrows():
                               'TV': row['ResolutionTV'],
                               'TC': row['ResolutionTC']
                               },
-                'PatientID':        patients,
-                'NoduleID':         nodules
+                'Nodules':          nodules
                 }
         nodules = []
-        patients = []
         sca.insert_one(dades)
         
 ##COLLECTION  NODULES    
